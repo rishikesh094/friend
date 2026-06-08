@@ -1,0 +1,181 @@
+.gallerySection {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.5rem;
+  font-family: var(--font-caveat), cursive;
+  color: var(--color-purple);
+  opacity: 0.9;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.polaroid {
+  padding: 15px 15px 25px 15px;
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  transform-origin: center center;
+}
+
+.polaroid:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.photoWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.photoWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid:hover .photoWrapper img {
+  transform: scale(1.05);
+}
+
+.caption {
+  font-family: var(--font-caveat), cursive;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 15px;
+  color: #333;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90vh;
+  max-height: 90vh;
+  background: #fff;
+  padding: 20px 20px 30px 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightboxContent img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(85vh - 80px);
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.lightboxCaption {
+  font-family: var(--font-caveat), cursive;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-top: 15px;
+  color: #333;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg) scale(1.2);
+  color: var(--color-pink);
+}
+
+@media (max-width: 768px) {
+  .closeBtn {
+    top: -40px;
+    right: 0;
+  }
+}
+
+.placeholderBox {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.placeholderBox p {
+  font-size: 1.2rem;
+  color: #888;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.lightboxPlaceholder {
+  width: 80vw;
+  height: 60vh;
+  max-width: 800px;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.lightboxPlaceholder p {
+  font-size: 2rem;
+  color: #666;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}

@@ -1,0 +1,21 @@
+.footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.content p {
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.highlight {
+  font-family: var(--font-caveat), cursive;
+  font-size: 3.5rem !important;
+  color: #ff4e50 !important;
+}

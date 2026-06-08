@@ -1,0 +1,111 @@
+/* Custom Variables */
+:root {
+  --color-pink: #ffd1dc;
+  --color-lavender: #e6e6fa;
+  --color-purple: #c3aed6;
+  --color-sky: #a2c1f2;
+  --color-peach: #ffdac1;
+  --color-white-transparent: rgba(255, 255, 255, 0.6);
+  
+  --bg-gradient: linear-gradient(135deg, #ffd1dc 0%, #e6e6fa 50%, #a2c1f2 100%);
+  --bg-gradient-night: linear-gradient(135deg, #2b1b54 0%, #1e1e40 50%, #0d1b2a 100%);
+  
+  --text-dark: #2d3436;
+  --text-light: #f5f6fa;
+  
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+[data-theme="night"] {
+  --color-pink: #a05260;
+  --color-lavender: #6b6b8c;
+  --color-purple: #5c4b6e;
+  --color-sky: #4b6a8e;
+  --color-peach: #a67c65;
+  --color-white-transparent: rgba(0, 0, 0, 0.6);
+  
+  --bg-gradient: var(--bg-gradient-night);
+  --text-dark: #f5f6fa;
+  --text-light: #2d3436;
+  
+  --glass-bg: rgba(0, 0, 0, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: var(--font-inter), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.font-handwritten {
+  font-family: var(--font-caveat), cursive;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s infinite;
+}
