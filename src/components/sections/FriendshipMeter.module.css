@@ -73,3 +73,18 @@
   0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); transform: scale(1); }
   100% { text-shadow: 0 0 20px rgba(255,255,255,1); transform: scale(1.2); }
 }
+
+@media (max-width: 768px) {
+  .meterSection {
+    padding: 4rem 1rem;
+  }
+  .container {
+    padding: 2.5rem 1rem;
+  }
+  .percentage {
+    font-size: 3.5rem;
+  }
+  .message {
+    font-size: 2rem;
+  }
+}

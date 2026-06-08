@@ -162,3 +162,31 @@
   border-radius: 4px;
   transition: width 0.1s linear;
 }
+
+@media (max-width: 768px) {
+  .musicSection {
+    padding: 4rem 1rem;
+  }
+  .playerContainer {
+    padding: 2rem 1.5rem;
+  }
+  .albumArt {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1.5rem;
+  }
+  .controls {
+    gap: 1.5rem;
+  }
+  .playBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .trackInfo h3 {
+    font-size: 1.5rem;
+  }
+  .trackInfo p {
+    font-size: 1.2rem;
+  }
+}

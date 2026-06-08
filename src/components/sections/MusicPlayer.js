@@ -1,25 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlay, FaPause, FaStepBackward, FaStepForward } from 'react-icons/fa';
-import dynamic from 'next/dynamic';
 import styles from './MusicPlayer.module.css';
-
-// Dynamically import ReactPlayer to prevent SSR hydration errors
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const audioRef = useRef(null);
 
   const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current?.pause();
+    } else {
+      audioRef.current?.play().catch(e => console.log("Audio play failed:", e));
+    }
     setIsPlaying(!isPlaying);
   };
 
-  const handleProgress = (state) => {
-    // state.played is a fraction between 0 and 1
-    setProgress(state.played * 100);
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const current = audioRef.current.currentTime;
+      const duration = audioRef.current.duration;
+      if (duration) {
+        setProgress((current / duration) * 100);
+      }
+    }
   };
 
   const handleEnded = () => {
@@ -27,26 +34,13 @@ export default function MusicPlayer() {
     setProgress(0);
   };
 
-  // The perfect Hindi friendship song
-  const videoUrl = "https://www.youtube.com/watch?v=qzgMEJMEuOQ";
-
   return (
     <section className={styles.musicSection}>
-      <ReactPlayer 
-        url={videoUrl}
-        playing={isPlaying}
-        onProgress={handleProgress}
+      <audio 
+        ref={audioRef} 
+        src="/song.mp3" 
+        onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
-        width="0"
-        height="0"
-        style={{ display: 'none' }}
-        config={{
-          youtube: {
-            playerVars: { 
-              origin: typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'
-            }
-          }
-        }}
       />
       <motion.div 
         className={`${styles.playerContainer} glass`}
@@ -61,13 +55,12 @@ export default function MusicPlayer() {
         </div>
 
         <div className={styles.trackInfo}>
-          <h3>Tera Yaar Hoon Main</h3>
-          <p>Sonu Ke Titu Ki Sweety</p>
+          <h3>Bulleya</h3>
+          <p>Sultan</p>
         </div>
 
         <div className={styles.equalizer}>
           {[...Array(12)].map((_, i) => {
-            // Fixed pseudo-random durations to prevent hydration mismatch
             const durations = [0.75, 0.9, 0.6, 0.85, 0.55, 0.95, 0.7, 0.65, 0.8, 0.5, 0.88, 0.72];
             const duration = durations[i];
             return (

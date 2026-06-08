@@ -95,3 +95,16 @@
   line-height: 1.6;
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .reasonsSection {
+    padding: 4rem 1rem;
+  }
+  .header h2 {
+    font-size: 2.2rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
